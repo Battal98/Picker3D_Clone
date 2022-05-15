@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering;
 using Cinemachine;
-using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -19,14 +18,12 @@ public class GameManager : MonoBehaviour
     #region GameObject, TextMeshPro and Lists
     [Header("-- Lists --")]
     public List<GameObject> Levels;
-    [SerializeField]
-    private GameObject RainbowGroundObj;
-
     [Space]
+
     [Header("-- Cams --")]
     public CinemachineVirtualCamera vCamGame;
-    //public GameObject camTarget;
     [Space]
+
     [Header(" *-_Player Values_-*")]
     public float PlayerForwardSpeed = 2;
     #endregion
@@ -35,37 +32,22 @@ public class GameManager : MonoBehaviour
     public int nextLevel = 0;
     private Volume _volume;
 
-    #region Final Rainbow Ground Values 
-
-    [Header("Rainbow Props")]
-    [SerializeField]
-    private int RainbowGroundPoolCount = 10;
-    [SerializeField]
-    private Transform rainbowStartPoint;
-    [SerializeField]
-    private Transform groundSpawner;
-    [SerializeField]
-    private List<GameObject> groundSpawns = new List<GameObject>();
-    [SerializeField]
-    private float _color;
-
-    #endregion
 
     private void Awake()
     {
         if (instance == null)
             instance = this;
+
         _volume = this.GetComponent<Volume>();
     }
 
-    private IEnumerator Start()
+    private void Start()
     {
         isGameStarted = false;
         isGameEnded = true;
         isGameRestarted = false;
         StartGame();
         UIManager.instance.LevelsText.text = (nextLevel + 1).ToString();
-        yield return new WaitForSeconds(1);
 
     }
     public void StartGame()

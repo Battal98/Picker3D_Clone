@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -51,9 +50,7 @@ public class LevelManager : MonoBehaviour
     private Transform rainbowStartPoint;
     [SerializeField]
     private Transform groundSpawner;
-    [SerializeField]
     private List<GameObject> groundSpawns = new List<GameObject>();
-    [SerializeField]
     private float _color;
 
     #endregion
@@ -68,8 +65,6 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         Init();
-        _playerRb = PlayerForward.instance.PlayerPrefab.GetComponentInParent<Rigidbody>();
-        RainBowGroundPool();
     }
 
     private void Update()
@@ -105,6 +100,8 @@ public class LevelManager : MonoBehaviour
         }
 
         _oldSpeed = GameManager.instance.PlayerForwardSpeed;
+        _playerRb = PlayerForward.instance.PlayerPrefab.GetComponentInParent<Rigidbody>();
+        RainBowGroundPool();
     }
 
     public async void WaitForCalculated()
@@ -257,7 +254,7 @@ public class LevelManager : MonoBehaviour
         _getTextObj.GetComponentInChildren<TextMeshPro>().text = _value.ToString();
     }
 
-    public void RainBowGroundPool()
+    private void RainBowGroundPool()
     {
         for (int i = 0; i < RainbowGroundPoolCount; i++)
         {
