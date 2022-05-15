@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         isGameEnded = true;
         isGameRestarted = false;
         StartGame();
-        UIManager.instance.LevelsText.text = (nextLevel + 1).ToString();
+        UIManager.instance.LevelsText.text =  "LEVEL " + (nextLevel + 1).ToString();
 
     }
     public void StartGame()
