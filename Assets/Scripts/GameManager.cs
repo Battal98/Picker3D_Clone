@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(_waitTime);
         UIManager.instance.WinMenu.SetActive(true);
         UIManager.instance.GameMenu.SetActive(false);
+        UIManager.instance.TaptapMenus.SetActive(false);
         _volume.enabled = true;
     }
 

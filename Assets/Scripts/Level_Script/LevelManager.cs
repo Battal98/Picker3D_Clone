@@ -55,6 +55,8 @@ public class LevelManager : MonoBehaviour
 
     #endregion
 
+    private UIManager _uiManager;
+
     private void Awake()
     {
         if (instance == null)
@@ -65,6 +67,8 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         Init();
+
+        _uiManager = UIManager.instance;
     }
 
     private void Update()
@@ -156,7 +160,7 @@ public class LevelManager : MonoBehaviour
             else
             {
                 _isFinalRide = true;
- 
+               _uiManager.TaptapMenus.SetActive(true);
                 //GameManager.instance.OnLevelCompleted();
             }
             return;
@@ -200,15 +204,21 @@ public class LevelManager : MonoBehaviour
         if (IsTapTapTime)
         {
             if (_currentTaptapCount > 0)
+            {
                 _currentTaptapCount -= Time.deltaTime;
+                _uiManager.FillImage.fillAmount = _currentTaptapCount / 10;
+            }
             else
                 _currentTaptapCount = 0;
 
             if (Input.GetMouseButtonDown(0))
             {
                 if (_currentTaptapCount < MaxTapTapCount - 0.1f)
+                {
                     _currentTaptapCount += IncreaseTapTapBarValue;
-                    
+                    _uiManager.FillImage.fillAmount = IncreaseTapTapBarValue / 10;
+                }
+
             }
         }
     }
