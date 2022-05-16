@@ -1623,6 +1623,7 @@ MonoBehaviour:
   Levels:
   - {fileID: 6190191747004502888, guid: de11a3fcf502fae4eaa61000935ad9fd, type: 3}
   - {fileID: 5375984691564303456, guid: d6c6d50c2a3ecb948b42115c38d0e5bb, type: 3}
+  - {fileID: 2377874018922016098, guid: d2e02977e34c3964387182455230206c, type: 3}
   vCamGame: {fileID: 1360964192}
   PlayerForwardSpeed: 100
   levelCount: 0
@@ -2410,7 +2411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138677391}
   m_LocalRotation: {x: 0.7064338, y: 0.47771442, z: 0.030843567, w: 0.5213338}
-  m_LocalPosition: {x: 0.24, y: 3, z: 4.18}
+  m_LocalPosition: {x: 0.24, y: 3, z: 5.1699996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 142502695}
