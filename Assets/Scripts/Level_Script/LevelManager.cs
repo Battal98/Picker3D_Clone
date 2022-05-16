@@ -231,7 +231,6 @@ public class LevelManager : MonoBehaviour
         #endregion
 
         int timer = (int)_currentTaptapCount;
-
         await Task.Delay(1000 * timer);
 
         GameManager.instance.OnLevelCompleted();
@@ -260,18 +259,20 @@ public class LevelManager : MonoBehaviour
         {
             if (i == 0)
             {
-                GameObject _ground = Instantiate(RainbowGroundObj, rainbowStartPoint.transform.position, Quaternion.identity, groundSpawner);
-                groundSpawns.Add(_ground);
-                SetColor(_ground);
-                SetText(_ground, i);
+                SetRainbow(i, rainbowStartPoint.transform.position);
             }
             else
             {
-                GameObject _ground = Instantiate(RainbowGroundObj, groundSpawns[i - 1].transform.position + new Vector3(0, 0, RainbowGroundObj.transform.localScale.z), Quaternion.identity, groundSpawner);
-                groundSpawns.Add(_ground);
-                SetColor(_ground);
-                SetText(_ground, i);
+                SetRainbow(i, groundSpawns[i - 1].transform.position + new Vector3(0, 0, RainbowGroundObj.transform.localScale.z));
             }
         }
+    }
+
+    private void SetRainbow(int _index, Vector3 _pos)
+    {
+        GameObject _ground = Instantiate(RainbowGroundObj, _pos, Quaternion.identity, groundSpawner);
+        groundSpawns.Add(_ground);
+        SetColor(_ground);
+        SetText(_ground, _index);
     }
 }
